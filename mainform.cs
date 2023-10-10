@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,41 @@ namespace Product
             currentbtn = bnt_productfrom;
             OpenChildForm(new productform());
             this.Opacity = 1.0;
+
+            // 네트워크 상태 변경 이벤트 핸들러 등록
+            NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
+
+            // 초기 네트워크 상태 확인
+            bool isNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
+            UpdateNetworkStatus(isNetworkAvailable);
+        }
+
+        private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
+        {
+            // 네트워크 상태 변경 시 호출되는 이벤트 핸들러
+            UpdateNetworkStatus(e.IsAvailable);
+        }
+
+        private void UpdateNetworkStatus(bool isAvailable)
+        {
+            if (isAvailable)
+            {
+                lbl_network.Text = "정상";
+                panelNetwork.BackColor = Color.MediumSeaGreen;
+            }
+            else
+            {
+                lbl_network.Text = "오류";
+                panelNetwork.BackColor = Color.Crimson;
+            }
+        }
+     
+
+      
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // 폼 종료 시에 네트워크 상태 변경 이벤트 핸들러 제거
+            NetworkChange.NetworkAvailabilityChanged -= NetworkChange_NetworkAvailabilityChanged;
         }
 
         private void OpenChildForm(Form childForm)
@@ -123,6 +159,18 @@ namespace Product
         {
             ActivateButton(sender);
             OpenChildForm(new report_form());
+        }
+
+        private void mainform_Load(object sender, EventArgs e)
+        {
+            timer1.Interval = 100;
+            timer1.Start();  //타이머 시작    
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime nowDate = DateTime.Now;
+            lbltime.Text = nowDate.ToString("yyyy년MM월dd일ddd요일 \n HH:mm:ss");
         }
     }
 }
