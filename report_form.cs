@@ -24,6 +24,8 @@ namespace Product
             update();
         }
 
+
+
         public void update()
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -34,7 +36,7 @@ namespace Product
 
                 connection.Open();
 
-
+            ///////////////첫번째 그래프 시작//////////
                 chart1.Series.Clear();
 
                 Series series1 = new Series("code1");
@@ -43,7 +45,7 @@ namespace Product
                 Series series4 = new Series("code4");
                 series1.ChartType = SeriesChartType.Column;
 
-                // SQL 쿼리 작성 (예: "SELECT * FROM YourTable")
+               
                
                 string query_code1 = $"SELECT product_day,COUNT(*) as code1_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '01' GROUP BY product_day";
                 string query_code2 = $"SELECT product_day,COUNT(*) as code2_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '02' GROUP BY product_day";
@@ -61,7 +63,7 @@ namespace Product
                     {
                        
                         int code1Count = (int)row["code1_count"];
-
+                        //아래 두줄은 X축을 적기 위한 것이다. 
                         DateTime productDay = (DateTime)row["product_day"];
                         string productDayString = productDay.ToString("MM-dd"); 
 
@@ -130,13 +132,17 @@ namespace Product
                 chart1.Series.Add(series3);
                 chart1.Series.Add(series4);
 
+                ///##############도넛 차트 시작
+                donut_chart.Series.Clear();
+
+
                 string donut_code1 = $"SELECT COUNT(*) as donut1_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '01'";
                 string donut_code2 = $"SELECT COUNT(*) as donut2_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '02'";
                 string donut_code3 = $"SELECT COUNT(*) as donut3_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '03'";
                 string donut_code4 = $"SELECT COUNT(*) as donut4_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '04'";
 
 
-                ///도넛 차트
+           
                 int do_code1;
                 int do_code2;
                 int do_code3;
@@ -197,11 +203,11 @@ namespace Product
                         do_code4 = 0; // 결과가 없을 경우 0으로 설정
                     }
                 }
-                donut_chart.Series.Clear();
+                
 
                 Series series = new Series("Donut");
                 series.ChartType = SeriesChartType.Doughnut;
-
+                //퍼센트 만들어 가는중
                 int total = do_code1 + do_code2 + do_code3 + do_code4;
                 double per_a = ((double)do_code1 / total) * 100;
                 double per_b = ((double)do_code2 / total) * 100;
@@ -217,8 +223,9 @@ namespace Product
                 string s_per_b = $"{formattedPer_b}%";
                 string s_per_c = $"{formattedPer_c}%";
                 string s_per_d = $"{formattedPer_d}%";
-                // 데이터 포인트 추가
+              //퍼센트 표시완료
 
+                
                 series.Points.AddXY(s_per_a, do_code1);
                 series.Points.AddXY(s_per_b, do_code2);
                 series.Points.AddXY(s_per_c, do_code3);
@@ -230,7 +237,7 @@ namespace Product
                 series.Points[3].LegendText = "Code4";
                 donut_chart.Series.Add(series);
 
-                // 생산량. 결함품 그래프
+                ///////////////////// 생산량. 결함품 그래프////////////////////////////////
                 chart2.Series.Clear();
 
                 Series series_total = new Series("Total");
@@ -285,12 +292,15 @@ namespace Product
 
         }
 
+        //시작 날이바뀌면
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             startDateString = start_date.Value.ToString("yyyy-MM-dd");
             update();
         }
 
+
+        //마지막 날이 바뀌면
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             endDateString = end_date.Value.ToString("yyyy-MM-dd");

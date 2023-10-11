@@ -27,7 +27,7 @@ namespace Product
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        {//클릭한 셀의 행 색 바꾸기
             if (e.RowIndex >= 0)
             {
                 if (dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor != Color.FromArgb(192, 192, 255))

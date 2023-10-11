@@ -13,14 +13,14 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Product
 {
-    
+
     public partial class productform : Form
     {
         string connectionString = "Data Source=DESKTOP-8MVAM1C;Initial Catalog=Hamburger;User ID=test;Password=0000;";
         private static string startDateString = "2023-10-02";
         private static string endDateString = "2023-10-07";
 
-        
+
 
 
         public productform()
@@ -29,13 +29,16 @@ namespace Product
             DateTimePicker datepicker2 = new DateTimePicker();
             DateTime startDate = DateTime.Parse(startDateString);
 
+            Timer timer = new System.Windows.Forms.Timer();
+            timer.Interval = 1000; // 1초
+           
+            timer.Start();
 
-         
 
 
 
             InitializeComponent();
-           
+
         }
         #region sql문
         private void productform_Load(object sender, EventArgs e)
@@ -47,29 +50,35 @@ namespace Product
         }
 
         public void update()
-        { using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string selection = "";
 
-                
+
                 connection.Open();
 
-                if (cboxMonsterX.Checked) 
-                {   
+                #region 체크박스 
+                ///////////체크박스에 맞는 경우에 수 만들기
+                if (cboxMonsterX.Checked)
+                {
                     if (selection == "")
                     {
-                        selection += " AND (product_name = 'monsterX'";
+                        selection += " AND (product_name = 'monsterX'";//만약 처음이면 and이고
                     }
-                    else { selection += " OR product_name = 'monsterX'"; }
+                    else { selection += " OR product_name = 'monsterX'"; }//기존에 체크된것이 있다면 or
                 }
-                if (cboxCheese.Checked) 
+
+
+
+                if (cboxCheese.Checked)
                 {
                     if (selection == "")
                     {
                         selection += " AND (product_name = 'CheeseWhaper'";
                     }
                     else { selection += " OR product_name = 'CheeseWhaper'"; }
-                   
+
                 }
 
                 if (cboxBulgogiWhaper.Checked)
@@ -95,20 +104,17 @@ namespace Product
 
 
                 if (selection != "") { selection += ")"; }
-               
+                ///체크박스 완료
+                #endregion
 
-                // SQL 쿼리 작성 (예: "SELECT * FROM YourTable")
+                #region 데이터그리드와총갯수구하기
                 string query1 = $"SELECT * FROM product  WHERE product_day Between '{startDateString}' and '{endDateString}'{selection} ORDER BY product_day";
                 string query_monster = $"SELECT COUNT(*) AS monsterX_count FROM product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND product_name = 'monsterX'";
                 string query_Cheese = $"SELECT COUNT(*) AS CheeseWhaper_count FROM product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND product_name = 'CheeseWhaper'";
                 string query_Shrimp = $"SELECT COUNT(*) AS ShrimpWhaper_count FROM product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND product_name = 'ShrimpWhaper'";
                 string query_BulgogiWhaper = $"SELECT COUNT(*) AS BulgogiWhaper_count FROM product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND product_name = 'BulgogiWhaper'";
 
-                string defect_monster = $"SELECT COUNT(*) AS monsterX_count FROM product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND product_name = 'monsterX' and Defective_code IS NOT NULL";
-                string defect_Cheese = $"SELECT COUNT(*) AS CheeseWhaper_count FROM product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND product_name = 'CheeseWhaper'and Defective_code IS NOT NULL";
-                string defect_Shrimp = $"SELECT COUNT(*) AS ShrimpWhaper_count FROM product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND product_name = 'ShrimpWhaper'and Defective_code IS NOT NULL";
-                string defect_BulgogiWhaper = $"SELECT COUNT(*) AS BulgogiWhaper_count FROM product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND product_name = 'BulgogiWhaper'and Defective_code IS NOT NULL";
-
+               
 
                 //전체 데이터 그리드에 붙이기
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query1, connection))
@@ -175,6 +181,13 @@ namespace Product
                         Shrimp_Total.Text = "0"; // 결과가 없을 경우 0으로 설정
                     }
                 }
+                #endregion
+
+                #region 불량품갯수구하기
+                string defect_monster = $"SELECT COUNT(*) AS monsterX_count FROM product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND product_name = 'monsterX' and Defective_code IS NOT NULL";
+                string defect_Cheese = $"SELECT COUNT(*) AS CheeseWhaper_count FROM product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND product_name = 'CheeseWhaper'and Defective_code IS NOT NULL";
+                string defect_Shrimp = $"SELECT COUNT(*) AS ShrimpWhaper_count FROM product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND product_name = 'ShrimpWhaper'and Defective_code IS NOT NULL";
+                string defect_BulgogiWhaper = $"SELECT COUNT(*) AS BulgogiWhaper_count FROM product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND product_name = 'BulgogiWhaper'and Defective_code IS NOT NULL";
 
                 using (SqlDataAdapter adapter = new SqlDataAdapter(defect_monster, connection))
                 {
@@ -233,8 +246,12 @@ namespace Product
                     }
                 }
 
+                #endregion
 
                 connection.Close();
+
+
+                //도넛차트그리기
                 donut_Chart.Series.Clear();
 
                 Series series = new Series("Donut");
@@ -259,7 +276,7 @@ namespace Product
                 string s_per_b = $"{formattedPer_b}%";
                 string s_per_c = $"{formattedPer_c}%";
                 string s_per_d = $"{formattedPer_d}%";
-                // 데이터 포인트 추가
+               
 
                 series.Points.AddXY(s_per_a, int.Parse(monsterX_total.Text));
                 series.Points.AddXY(s_per_b, int.Parse(Cheese_total.Text));
@@ -275,13 +292,13 @@ namespace Product
                 // 차트에 시리즈 추가
 
                 donut_Chart.Series.Add(series);
-              
+
                 donut_Chart.Series[0].Points[0].Color = Color.FromArgb(54, 150, 255);
                 donut_Chart.Series[0].Points[1].Color = Color.FromArgb(255, 140, 129);
                 donut_Chart.Series[0].Points[2].Color = Color.FromArgb(0, 173, 195);
                 donut_Chart.Series[0].Points[3].Color = Color.FromArgb(129, 128, 129);
 
-                
+
 
 
             }
@@ -290,6 +307,7 @@ namespace Product
 
         #endregion
 
+        #region 체크박스 처리
         private void datepicker1_ValueChanged(object sender, EventArgs e)
         {
             startDateString = datepicker1.Value.ToString("yyyy-MM-dd");
@@ -323,7 +341,7 @@ namespace Product
         {
             update();
         }
-
+        #endregion
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             // 클릭된 행의 배경색 변경
@@ -334,12 +352,14 @@ namespace Product
                     dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(192, 192, 255);
                     dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
                 }
-                else 
+                else
                 {
                     dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
                     dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
                 }
             }
         }
+
+
     }
 }

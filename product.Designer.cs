@@ -84,6 +84,7 @@ namespace Product
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.hamburgerDataSet = new Product.HamburgerDataSet();
             this.productTableAdapter = new Product.HamburgerDataSetTableAdapters.productTableAdapter();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -660,6 +661,10 @@ namespace Product
             // 
             this.productTableAdapter.ClearBeforeFill = true;
             // 
+            // timer1
+            // 
+  
+            // 
             // productform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -765,5 +770,6 @@ namespace Product
         private System.Windows.Forms.CheckBox cboxMonsterX;
         private System.Windows.Forms.CheckBox cboxShrimpWhaper;
         private System.Windows.Forms.CheckBox cboxBulgogiWhaper;
+        private System.Windows.Forms.Timer timer1;
     }
 }
