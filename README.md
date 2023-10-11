@@ -5,6 +5,11 @@
 <img src="https://img.shields.io/badge/visualstudio-5C2D91?style=for-the-badge&logo=visualstudio&logoColor=white">
 <img src="https://img.shields.io/badge/ADO.NET-5C2D91?style=for-the-badge&logo=visualstudio&logoColor=white">
 <img src="https://img.shields.io/badge/microsoftsqlserver?style=flat&logo=microsoftsqlserver&logoColor=#CC2927">
+## 구조
+Mianform.cs - 기본 틀을 구성. 메뉴바
+Prooduct.cs -생산량
+report_form.cs - 리포트 
+custer.cs와 CustomerViewModel(MVVM패턴 적용)
 
 ## Product
 <h2>Product</h2>
