@@ -4,7 +4,7 @@
 <img src="https://img.shields.io/badge/.NET-0099E5?style=for-the-badge&logo=dotnet&logoColor=white">
 <img src="https://img.shields.io/badge/visualstudio-5C2D91?style=for-the-badge&logo=visualstudio&logoColor=white">
 <img src="https://img.shields.io/badge/ADO.NET-5C2D91?style=for-the-badge&logo=visualstudio&logoColor=white">
-<img src="https://img.shields.io/badge/microsoftsqlserver?style=flat&logo=microsoftsqlserver&logoColor=#CC2927">
+<img src="https://img.shields.io/badge/microsoftsqlserver?style=flat&logo=visualstudio&logoColor=#CC2927">
 
 ## Product
 <h2>Product</h2>
