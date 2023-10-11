@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Product
 {
@@ -234,6 +235,55 @@ namespace Product
 
 
                 connection.Close();
+                donut_Chart.Series.Clear();
+
+                Series series = new Series("Donut");
+                series.ChartType = SeriesChartType.Doughnut;
+
+                int a = int.Parse(monsterX_total.Text);
+                int b = int.Parse(Cheese_total.Text);
+                int c = int.Parse(Bulgogi_total.Text);
+                int d = int.Parse(Shrimp_Total.Text);
+                int total = a + b + c + d;
+                double per_a = ((double)a / total) * 100;
+                double per_b = ((double)b / total) * 100;
+                double per_c = ((double)c / total) * 100;
+                double per_d = ((double)d / total) * 100;
+
+                string formattedPer_a = per_a.ToString("N2"); // 소수점 둘째 자릿수까지 표시
+                string formattedPer_b = per_b.ToString("N2");
+                string formattedPer_c = per_c.ToString("N2");
+                string formattedPer_d = per_d.ToString("N2");
+
+                string s_per_a = $"{formattedPer_a}%";
+                string s_per_b = $"{formattedPer_b}%";
+                string s_per_c = $"{formattedPer_c}%";
+                string s_per_d = $"{formattedPer_d}%";
+                // 데이터 포인트 추가
+
+                series.Points.AddXY(s_per_a, int.Parse(monsterX_total.Text));
+                series.Points.AddXY(s_per_b, int.Parse(Cheese_total.Text));
+                series.Points.AddXY(s_per_c, int.Parse(Bulgogi_total.Text));
+                series.Points.AddXY(s_per_d, int.Parse(Shrimp_Total.Text));
+
+                series.Points[0].LegendText = "MonsterX";
+                series.Points[1].LegendText = "Cheese Whaper";
+                series.Points[2].LegendText = "Bulgogi Whaper";
+                series.Points[3].LegendText = "Shrimp Whaper";
+
+
+                // 차트에 시리즈 추가
+
+                donut_Chart.Series.Add(series);
+              
+                donut_Chart.Series[0].Points[0].Color = Color.FromArgb(54, 150, 255);
+                donut_Chart.Series[0].Points[1].Color = Color.FromArgb(255, 140, 129);
+                donut_Chart.Series[0].Points[2].Color = Color.FromArgb(0, 173, 195);
+                donut_Chart.Series[0].Points[3].Color = Color.FromArgb(129, 128, 129);
+
+                
+
+
             }
 
         }
@@ -272,6 +322,24 @@ namespace Product
         private void cboxShrimpWhaper_CheckedChanged(object sender, EventArgs e)
         {
             update();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // 클릭된 행의 배경색 변경
+            if (e.RowIndex >= 0)
+            {
+                if (dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor != Color.FromArgb(192, 192, 255))
+                {
+                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(192, 192, 255);
+                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+                }
+                else 
+                {
+                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                }
+            }
         }
     }
 }

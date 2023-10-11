@@ -172,5 +172,11 @@ namespace Product
             DateTime nowDate = DateTime.Now;
             lbltime.Text = nowDate.ToString("yyyy년MM월dd일ddd요일 \n HH:mm:ss");
         }
+
+        private void btnCuostomer_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender);
+            OpenChildForm(new Customerform());
+        }
     }
 }

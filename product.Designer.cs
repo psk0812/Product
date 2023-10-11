@@ -30,9 +30,13 @@ namespace Product
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -66,8 +70,10 @@ namespace Product
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.donut_Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.cboxShrimpWhaper = new System.Windows.Forms.CheckBox();
+            this.cboxBulgogiWhaper = new System.Windows.Forms.CheckBox();
             this.cboxCheese = new System.Windows.Forms.CheckBox();
             this.cboxMonsterX = new System.Windows.Forms.CheckBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -78,8 +84,6 @@ namespace Product
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.hamburgerDataSet = new Product.HamburgerDataSet();
             this.productTableAdapter = new Product.HamburgerDataSetTableAdapters.productTableAdapter();
-            this.cboxBulgogiWhaper = new System.Windows.Forms.CheckBox();
-            this.cboxShrimpWhaper = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -88,7 +92,7 @@ namespace Product
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donut_Chart)).BeginInit();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
@@ -485,7 +489,7 @@ namespace Product
             // 
             this.tableLayoutPanel3.ColumnCount = 1;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.chart1, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.donut_Chart, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.panel8, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(548, 116);
@@ -497,23 +501,23 @@ namespace Product
             this.tableLayoutPanel3.Size = new System.Drawing.Size(176, 246);
             this.tableLayoutPanel3.TabIndex = 6;
             // 
-            // chart1
+            // donut_Chart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
-            this.chart1.Location = new System.Drawing.Point(3, 76);
-            this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
-            this.chart1.Size = new System.Drawing.Size(170, 167);
-            this.chart1.TabIndex = 1;
-            this.chart1.Text = "chart1";
+            chartArea1.Name = "ChartArea1";
+            this.donut_Chart.ChartAreas.Add(chartArea1);
+            this.donut_Chart.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.donut_Chart.Legends.Add(legend1);
+            this.donut_Chart.Location = new System.Drawing.Point(3, 76);
+            this.donut_Chart.Name = "donut_Chart";
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.donut_Chart.Series.Add(series1);
+            this.donut_Chart.Size = new System.Drawing.Size(170, 167);
+            this.donut_Chart.TabIndex = 1;
+            this.donut_Chart.Text = "chart1";
             // 
             // panel8
             // 
@@ -525,6 +529,30 @@ namespace Product
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(170, 67);
             this.panel8.TabIndex = 2;
+            // 
+            // cboxShrimpWhaper
+            // 
+            this.cboxShrimpWhaper.AutoSize = true;
+            this.cboxShrimpWhaper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cboxShrimpWhaper.Location = new System.Drawing.Point(0, 48);
+            this.cboxShrimpWhaper.Name = "cboxShrimpWhaper";
+            this.cboxShrimpWhaper.Size = new System.Drawing.Size(170, 16);
+            this.cboxShrimpWhaper.TabIndex = 3;
+            this.cboxShrimpWhaper.Text = "Shrimp Whaper";
+            this.cboxShrimpWhaper.UseVisualStyleBackColor = true;
+            this.cboxShrimpWhaper.CheckedChanged += new System.EventHandler(this.cboxShrimpWhaper_CheckedChanged);
+            // 
+            // cboxBulgogiWhaper
+            // 
+            this.cboxBulgogiWhaper.AutoSize = true;
+            this.cboxBulgogiWhaper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cboxBulgogiWhaper.Location = new System.Drawing.Point(0, 32);
+            this.cboxBulgogiWhaper.Name = "cboxBulgogiWhaper";
+            this.cboxBulgogiWhaper.Size = new System.Drawing.Size(170, 16);
+            this.cboxBulgogiWhaper.TabIndex = 2;
+            this.cboxBulgogiWhaper.Text = "BulgogiWhaper";
+            this.cboxBulgogiWhaper.UseVisualStyleBackColor = true;
+            this.cboxBulgogiWhaper.CheckedChanged += new System.EventHandler(this.cboxBulgogiWhaper_CheckedChanged);
             // 
             // cboxCheese
             // 
@@ -553,8 +581,20 @@ namespace Product
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn13,
             this.dataGridViewTextBoxColumn14,
@@ -562,13 +602,25 @@ namespace Product
             this.dataGridViewTextBoxColumn16});
             this.tableLayoutPanel2.SetColumnSpan(this.dataGridView1, 3);
             this.dataGridView1.DataSource = this.productBindingSource;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(8, 116);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(534, 246);
             this.dataGridView1.TabIndex = 7;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // dataGridViewTextBoxColumn13
             // 
@@ -608,30 +660,6 @@ namespace Product
             // 
             this.productTableAdapter.ClearBeforeFill = true;
             // 
-            // cboxBulgogiWhaper
-            // 
-            this.cboxBulgogiWhaper.AutoSize = true;
-            this.cboxBulgogiWhaper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.cboxBulgogiWhaper.Location = new System.Drawing.Point(0, 32);
-            this.cboxBulgogiWhaper.Name = "cboxBulgogiWhaper";
-            this.cboxBulgogiWhaper.Size = new System.Drawing.Size(170, 16);
-            this.cboxBulgogiWhaper.TabIndex = 2;
-            this.cboxBulgogiWhaper.Text = "BulgogiWhaper";
-            this.cboxBulgogiWhaper.UseVisualStyleBackColor = true;
-            this.cboxBulgogiWhaper.CheckedChanged += new System.EventHandler(this.cboxBulgogiWhaper_CheckedChanged);
-            // 
-            // cboxShrimpWhaper
-            // 
-            this.cboxShrimpWhaper.AutoSize = true;
-            this.cboxShrimpWhaper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.cboxShrimpWhaper.Location = new System.Drawing.Point(0, 48);
-            this.cboxShrimpWhaper.Name = "cboxShrimpWhaper";
-            this.cboxShrimpWhaper.Size = new System.Drawing.Size(170, 16);
-            this.cboxShrimpWhaper.TabIndex = 3;
-            this.cboxShrimpWhaper.Text = "Shrimp Whaper";
-            this.cboxShrimpWhaper.UseVisualStyleBackColor = true;
-            this.cboxShrimpWhaper.CheckedChanged += new System.EventHandler(this.cboxShrimpWhaper_CheckedChanged);
-            // 
             // productform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -658,7 +686,7 @@ namespace Product
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.donut_Chart)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -703,7 +731,7 @@ namespace Product
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart donut_Chart;
       
         private System.Windows.Forms.DataGridViewTextBoxColumn productnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productdayDataGridViewTextBoxColumn;

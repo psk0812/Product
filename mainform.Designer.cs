@@ -31,6 +31,18 @@ namespace Product
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panelNetwork = new System.Windows.Forms.Panel();
+            this.lbl_network = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.lbltime = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btn_Customer = new FontAwesome.Sharp.IconButton();
+            this.btn_report = new FontAwesome.Sharp.IconButton();
             this.panel5 = new System.Windows.Forms.Panel();
             this.bnt_productfrom = new FontAwesome.Sharp.IconButton();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -46,30 +58,20 @@ namespace Product
             this.btn_maxi = new FontAwesome.Sharp.IconButton();
             this.btn_exit = new FontAwesome.Sharp.IconButton();
             this.mainpanel = new System.Windows.Forms.Panel();
-            this.btn_report = new FontAwesome.Sharp.IconButton();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panelNetwork = new System.Windows.Forms.Panel();
-            this.lbl_network = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lbltime = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panelNetwork.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panelTitlebar.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panelNetwork.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -90,11 +92,149 @@ namespace Product
             this.panel1.Size = new System.Drawing.Size(194, 560);
             this.panel1.TabIndex = 0;
             // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.panelNetwork);
+            this.panel7.Controls.Add(this.panel10);
+            this.panel7.Controls.Add(this.panel9);
+            this.panel7.Controls.Add(this.panel8);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel7.Location = new System.Drawing.Point(0, 366);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(194, 194);
+            this.panel7.TabIndex = 6;
+            // 
+            // panelNetwork
+            // 
+            this.panelNetwork.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.panelNetwork.Controls.Add(this.lbl_network);
+            this.panelNetwork.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelNetwork.Location = new System.Drawing.Point(0, 128);
+            this.panelNetwork.Name = "panelNetwork";
+            this.panelNetwork.Size = new System.Drawing.Size(194, 66);
+            this.panelNetwork.TabIndex = 3;
+            // 
+            // lbl_network
+            // 
+            this.lbl_network.AutoSize = true;
+            this.lbl_network.Font = new System.Drawing.Font("문체부 제목 돋음체", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.lbl_network.Location = new System.Drawing.Point(68, 23);
+            this.lbl_network.Name = "lbl_network";
+            this.lbl_network.Size = new System.Drawing.Size(47, 19);
+            this.lbl_network.TabIndex = 0;
+            this.lbl_network.Text = "정상";
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(86)))), ((int)(((byte)(141)))));
+            this.panel10.Controls.Add(this.label3);
+            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel10.Location = new System.Drawing.Point(0, 97);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(194, 31);
+            this.panel10.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(62, 16);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "네트워크";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.White;
+            this.panel9.Controls.Add(this.lbltime);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel9.Location = new System.Drawing.Point(0, 31);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(194, 66);
+            this.panel9.TabIndex = 1;
+            // 
+            // lbltime
+            // 
+            this.lbltime.AutoSize = true;
+            this.lbltime.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbltime.Location = new System.Drawing.Point(12, 21);
+            this.lbltime.Name = "lbltime";
+            this.lbltime.Size = new System.Drawing.Size(38, 12);
+            this.lbltime.TabIndex = 0;
+            this.lbltime.Text = "label4";
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(86)))), ((int)(((byte)(141)))));
+            this.panel8.Controls.Add(this.label2);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(0, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(194, 31);
+            this.panel8.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(86, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "시간";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.btn_Customer);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel6.Location = new System.Drawing.Point(0, 276);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(194, 59);
+            this.panel6.TabIndex = 5;
+            // 
+            // btn_Customer
+            // 
+            this.btn_Customer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Customer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btn_Customer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Customer.ForeColor = System.Drawing.Color.White;
+            this.btn_Customer.IconChar = FontAwesome.Sharp.IconChar.CircleUser;
+            this.btn_Customer.IconColor = System.Drawing.Color.White;
+            this.btn_Customer.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_Customer.Location = new System.Drawing.Point(0, 0);
+            this.btn_Customer.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_Customer.Name = "btn_Customer";
+            this.btn_Customer.Size = new System.Drawing.Size(194, 52);
+            this.btn_Customer.TabIndex = 5;
+            this.btn_Customer.Text = "Cusomer";
+            this.btn_Customer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_Customer.UseVisualStyleBackColor = true;
+            this.btn_Customer.Click += new System.EventHandler(this.btnCuostomer_Click);
+            // 
+            // btn_report
+            // 
+            this.btn_report.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_report.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
+            this.btn_report.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_report.ForeColor = System.Drawing.Color.White;
+            this.btn_report.IconChar = FontAwesome.Sharp.IconChar.LineChart;
+            this.btn_report.IconColor = System.Drawing.Color.White;
+            this.btn_report.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btn_report.Location = new System.Drawing.Point(0, 224);
+            this.btn_report.Margin = new System.Windows.Forms.Padding(0);
+            this.btn_report.Name = "btn_report";
+            this.btn_report.Size = new System.Drawing.Size(194, 52);
+            this.btn_report.TabIndex = 4;
+            this.btn_report.Text = "Report";
+            this.btn_report.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_report.UseVisualStyleBackColor = true;
+            this.btn_report.Click += new System.EventHandler(this.btn_report_Click);
+            // 
             // panel5
             // 
             this.panel5.Controls.Add(this.bnt_productfrom);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(0, 215);
+            this.panel5.Location = new System.Drawing.Point(0, 172);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(194, 52);
             this.panel5.TabIndex = 3;
@@ -105,7 +245,7 @@ namespace Product
             this.bnt_productfrom.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
             this.bnt_productfrom.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bnt_productfrom.ForeColor = System.Drawing.Color.White;
-            this.bnt_productfrom.IconChar = FontAwesome.Sharp.IconChar.NotesMedical;
+            this.bnt_productfrom.IconChar = FontAwesome.Sharp.IconChar.Hamburger;
             this.bnt_productfrom.IconColor = System.Drawing.Color.White;
             this.bnt_productfrom.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.bnt_productfrom.Location = new System.Drawing.Point(0, 0);
@@ -113,7 +253,7 @@ namespace Product
             this.bnt_productfrom.Name = "bnt_productfrom";
             this.bnt_productfrom.Size = new System.Drawing.Size(194, 52);
             this.bnt_productfrom.TabIndex = 0;
-            this.bnt_productfrom.Text = "product";
+            this.bnt_productfrom.Text = "Product";
             this.bnt_productfrom.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.bnt_productfrom.UseVisualStyleBackColor = true;
             this.bnt_productfrom.Click += new System.EventHandler(this.bnt_productfrom_Click);
@@ -123,7 +263,7 @@ namespace Product
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 137);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(194, 78);
+            this.panel4.Size = new System.Drawing.Size(194, 35);
             this.panel4.TabIndex = 2;
             // 
             // panel3
@@ -292,127 +432,9 @@ namespace Product
             this.mainpanel.Size = new System.Drawing.Size(748, 498);
             this.mainpanel.TabIndex = 2;
             // 
-            // btn_report
-            // 
-            this.btn_report.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_report.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
-            this.btn_report.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_report.ForeColor = System.Drawing.Color.White;
-            this.btn_report.IconChar = FontAwesome.Sharp.IconChar.NotesMedical;
-            this.btn_report.IconColor = System.Drawing.Color.White;
-            this.btn_report.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btn_report.Location = new System.Drawing.Point(0, 267);
-            this.btn_report.Margin = new System.Windows.Forms.Padding(0);
-            this.btn_report.Name = "btn_report";
-            this.btn_report.Size = new System.Drawing.Size(194, 52);
-            this.btn_report.TabIndex = 4;
-            this.btn_report.Text = "Report";
-            this.btn_report.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_report.UseVisualStyleBackColor = true;
-            this.btn_report.Click += new System.EventHandler(this.btn_report_Click);
-            // 
-            // panel6
-            // 
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel6.Location = new System.Drawing.Point(0, 319);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(194, 26);
-            this.panel6.TabIndex = 5;
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.panelNetwork);
-            this.panel7.Controls.Add(this.panel10);
-            this.panel7.Controls.Add(this.panel9);
-            this.panel7.Controls.Add(this.panel8);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 366);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(194, 194);
-            this.panel7.TabIndex = 6;
-            // 
-            // panel8
-            // 
-            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(86)))), ((int)(((byte)(141)))));
-            this.panel8.Controls.Add(this.label2);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel8.Location = new System.Drawing.Point(0, 0);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(194, 31);
-            this.panel8.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(86, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "시간";
-            // 
-            // panel9
-            // 
-            this.panel9.BackColor = System.Drawing.Color.White;
-            this.panel9.Controls.Add(this.lbltime);
-            this.panel9.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel9.Location = new System.Drawing.Point(0, 31);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(194, 66);
-            this.panel9.TabIndex = 1;
-            // 
-            // panel10
-            // 
-            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(86)))), ((int)(((byte)(141)))));
-            this.panel10.Controls.Add(this.label3);
-            this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel10.Location = new System.Drawing.Point(0, 97);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(194, 31);
-            this.panel10.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(62, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "네트워크";
-            // 
-            // panelNetwork
-            // 
-            this.panelNetwork.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.panelNetwork.Controls.Add(this.lbl_network);
-            this.panelNetwork.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelNetwork.Location = new System.Drawing.Point(0, 128);
-            this.panelNetwork.Name = "panelNetwork";
-            this.panelNetwork.Size = new System.Drawing.Size(194, 66);
-            this.panelNetwork.TabIndex = 3;
-            // 
-            // lbl_network
-            // 
-            this.lbl_network.AutoSize = true;
-            this.lbl_network.Font = new System.Drawing.Font("문체부 제목 돋음체", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.lbl_network.Location = new System.Drawing.Point(68, 23);
-            this.lbl_network.Name = "lbl_network";
-            this.lbl_network.Size = new System.Drawing.Size(47, 19);
-            this.lbl_network.TabIndex = 0;
-            this.lbl_network.Text = "정상";
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // lbltime
-            // 
-            this.lbltime.AutoSize = true;
-            this.lbltime.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbltime.Location = new System.Drawing.Point(12, 21);
-            this.lbltime.Name = "lbltime";
-            this.lbltime.Size = new System.Drawing.Size(38, 12);
-            this.lbltime.TabIndex = 0;
-            this.lbltime.Text = "label4";
             // 
             // mainform
             // 
@@ -427,6 +449,16 @@ namespace Product
             this.Name = "mainform";
             this.Load += new System.EventHandler(this.mainform_Load);
             this.panel1.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panelNetwork.ResumeLayout(false);
+            this.panelNetwork.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -434,15 +466,6 @@ namespace Product
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panelTitlebar.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panelNetwork.ResumeLayout(false);
-            this.panelNetwork.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -477,6 +500,7 @@ namespace Product
         private System.Windows.Forms.Label lbl_network;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lbltime;
+        private FontAwesome.Sharp.IconButton btn_Customer;
     }
 }
 
