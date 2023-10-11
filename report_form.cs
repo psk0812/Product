@@ -44,11 +44,11 @@ namespace Product
                 series1.ChartType = SeriesChartType.Column;
 
                 // SQL 쿼리 작성 (예: "SELECT * FROM YourTable")
-                string query1 = $"SELECT * FROM product  WHERE product_day Between '{startDateString}' and '{endDateString}' ORDER BY product_day";
-                string query_code1 = $"SELECT COUNT(*) as code1_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '01' GROUP BY product_day";
-                string query_code2 = $"SELECT COUNT(*) as code2_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '02' GROUP BY product_day";
-                string query_code3 = $"SELECT COUNT(*) as code3_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '03' GROUP BY product_day";
-                string query_code4 = $"SELECT COUNT(*) as code4_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '04' GROUP BY product_day";
+               
+                string query_code1 = $"SELECT product_day,COUNT(*) as code1_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '01' GROUP BY product_day";
+                string query_code2 = $"SELECT product_day,COUNT(*) as code2_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '02' GROUP BY product_day";
+                string query_code3 = $"SELECT product_day,COUNT(*) as code3_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '03' GROUP BY product_day";
+                string query_code4 = $"SELECT product_day,COUNT(*) as code4_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective_code = '04' GROUP BY product_day";
 
                
                 using (SqlDataAdapter adapter = new SqlDataAdapter(query_code1, connection))
@@ -61,8 +61,12 @@ namespace Product
                     {
                        
                         int code1Count = (int)row["code1_count"];
-                        Console.WriteLine(code1Count);
-                        series1.Points.AddY(code1Count);
+
+                        DateTime productDay = (DateTime)row["product_day"];
+                        string productDayString = productDay.ToString("MM-dd"); 
+
+
+                       series1.Points.AddXY(productDayString,code1Count);
                     }
                     
 
@@ -234,8 +238,8 @@ namespace Product
 
                 series_total.ChartType = SeriesChartType.Line;
                 series_code.ChartType = SeriesChartType.Line;
-                string total_sql = $"SELECT COUNT(*) as total_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' GROUP BY product_day";
-                string defect_sql = $"SELECT COUNT(*) as defect_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective='TRUE' GROUP BY product_day";
+                string total_sql = $"SELECT product_day,COUNT(*) as total_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' GROUP BY product_day";
+                string defect_sql = $"SELECT product_day,COUNT(*) as defect_count FROM  product WHERE product_day BETWEEN '{startDateString}' AND '{endDateString}' AND Defective='TRUE' GROUP BY product_day";
                
                 using (SqlDataAdapter adapter = new SqlDataAdapter(total_sql, connection))
                 {
@@ -247,8 +251,9 @@ namespace Product
                     {
 
                         int totalCount = (int)row["total_count"];
-
-                        series_total.Points.AddY(totalCount);
+                        DateTime productDay = (DateTime)row["product_day"];
+                        string productDayString = productDay.ToString("MM-dd");
+                        series_total.Points.AddXY(productDayString, totalCount);
                     }
                     
 
