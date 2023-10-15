@@ -20,18 +20,25 @@ namespace Product
         private int bordersize =2;
         public mainform()
         {
-            InitializeComponent();
-            this.Padding = new Padding(bordersize);
-            currentbtn = bnt_productfrom;
-            OpenChildForm(new productform());
-            this.Opacity = 1.0;
+            try 
+            {
+                InitializeComponent();
+                
+                currentbtn = bnt_productfrom;
 
-            // 네트워크 상태 변경 이벤트 핸들러 등록
-            NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
+                OpenChildForm(new productform());
+                this.Opacity = 1.0;
+                this.Padding = new Padding(bordersize);
+                // 네트워크 상태 변경 이벤트 핸들러 등록
+                NetworkChange.NetworkAvailabilityChanged += NetworkChange_NetworkAvailabilityChanged;
 
-            // 초기 네트워크 상태 확인
-            bool isNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
-            UpdateNetworkStatus(isNetworkAvailable);
+                // 초기 네트워크 상태 확인
+                bool isNetworkAvailable = NetworkInterface.GetIsNetworkAvailable();
+
+                UpdateNetworkStatus(isNetworkAvailable);
+
+            }catch(Exception ex)
+            { Console.WriteLine(ex); }
         }
 
         private void NetworkChange_NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
@@ -70,15 +77,13 @@ namespace Product
 
                 if (currentForm != null)
                 {
-                    string targetName = currentForm.Name;
-                    Form targetForm = (Form)mainpanel.Controls.Find(targetName, true)[0];
+                 
                     currentForm.Close();
-                    targetForm.Dispose();
+                    currentForm.Dispose();
                     
                 }
 
 
-               
                 currentForm = childForm;
                 childForm.TopLevel = false;
                 childForm.FormBorderStyle = FormBorderStyle.None;
@@ -90,10 +95,10 @@ namespace Product
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"에러 발생: {ex.Message}", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // 예외 처리 코드 추가
+                Console.WriteLine(ex);
             }
         }
+
         //Drag Form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -102,30 +107,58 @@ namespace Product
 
         private void panelTitlebar_MouseDown(object sender, MouseEventArgs e)
         {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
+            try
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, 0x112, 0xf012, 0);
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         private void btn_mini_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            try
+            {
+                this.WindowState = FormWindowState.Minimized;
+
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         private void btn_maxi_Click(object sender, EventArgs e)
         {
-            if (this.WindowState != FormWindowState.Maximized)
+            try
             {
-                this.WindowState = FormWindowState.Maximized;
+                if (this.WindowState != FormWindowState.Maximized)
+                {
+                    this.WindowState = FormWindowState.Maximized;
+                }
+                else
+                {
+                    this.WindowState = FormWindowState.Normal;
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                this.WindowState = FormWindowState.Normal;
+                Console.WriteLine(ex);
             }
+           
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+                this.Close();
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         public struct RGBColors
@@ -141,42 +174,73 @@ namespace Product
 
         private void ActivateButton(object senderBtn)
         {
-            
+
+            try
+            {
                 currentbtn.BackColor = RGBColors.color_btn_unclicked;
                 currentbtn = (IconButton)senderBtn;
                 currentbtn.BackColor = RGBColors.color_btn_clicked;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
             
         }
 
         private void bnt_productfrom_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
-            OpenChildForm(new productform());
+            try
+            {
+                ActivateButton(sender);
+                OpenChildForm(new productform());
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
 
         private void btn_report_Click(object sender, EventArgs e)
         {
-            ActivateButton(sender);
-            OpenChildForm(new report_form());
+            try
+            {
+                ActivateButton(sender);
+                OpenChildForm(new report_form());
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         private void mainform_Load(object sender, EventArgs e)
-        {
-            timer1.Interval = 100;
-            timer1.Start();  //타이머 시작    
+        {   try
+            {
+                timer1.Interval = 100;
+                timer1.Start();
+            }
+            catch (Exception ex) { Console.WriteLine(ex); }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            DateTime nowDate = DateTime.Now;
-            lbltime.Text = nowDate.ToString("yyyy년MM월dd일ddd요일 \n HH:mm:ss");
+            try
+            {
+                DateTime nowDate = DateTime.Now;
+                lbltime.Text = nowDate.ToString("yyyy년MM월dd일ddd요일 \n HH:mm:ss");
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         private void btnCuostomer_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender);
-            OpenChildForm(new Customerform());
+        {   try
+            {
+                ActivateButton(sender);
+                OpenChildForm(new Customerform());
+            }
+            catch (Exception ex) { Console.WriteLine(ex); }
         }
     }
 }

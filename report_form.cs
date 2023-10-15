@@ -19,9 +19,15 @@ namespace Product
         private static string endDateString = "2023-10-07";
         public report_form()
         {
-            InitializeComponent();
-            lbl_error.Text = "Error Code 1 - 재료 상함 \nError Code 2 - 패티 태움 \nError Code 3 - 번이 틀림 \nError Code 4 - 소스 적음";
-            update();
+            try
+            {
+                InitializeComponent();
+                lbl_error.Text = "Error Code 1 - 재료 상함 \nError Code 2 - 패티 태움 \nError Code 3 - 번이 틀림 \nError Code 4 - 소스 적음";
+                update();
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
 
@@ -295,16 +301,32 @@ namespace Product
         //시작 날이바뀌면
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            startDateString = start_date.Value.ToString("yyyy-MM-dd");
-            update();
+            try
+            {
+                startDateString = start_date.Value.ToString("yyyy-MM-dd");
+                update();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+           
         }
 
 
         //마지막 날이 바뀌면
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
-            endDateString = end_date.Value.ToString("yyyy-MM-dd");
-            update();
+            try
+            {
+                endDateString = end_date.Value.ToString("yyyy-MM-dd");
+                update();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            
         }
     }
 }

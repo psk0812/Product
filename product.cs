@@ -24,27 +24,23 @@ namespace Product
 
 
         public productform()
-        {
-            // 원하는 날짜를 생성
-            DateTimePicker datepicker2 = new DateTimePicker();
-            DateTime startDate = DateTime.Parse(startDateString);
-
-            Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = 1000; // 1초
-           
-            timer.Start();
-
-
-
-
-            InitializeComponent();
-
+        {   try
+            {
+                DateTime startDate = DateTime.Parse(startDateString);
+                Timer timer = new System.Windows.Forms.Timer();
+                timer.Interval = 1000;
+                timer.Start();
+                InitializeComponent();
+            }
+            catch (Exception ex) { Console.WriteLine(ex); }
         }
         #region sql문
         private void productform_Load(object sender, EventArgs e)
         {
-
-            update();
+            try { update(); }
+            catch(Exception ex)
+            { Console.WriteLine(ex); }
+            
 
 
         }
@@ -308,58 +304,79 @@ namespace Product
         #endregion
 
         #region 체크박스 처리
-        private void datepicker1_ValueChanged(object sender, EventArgs e)
+        private void start_date_ValueChanged(object sender, EventArgs e)
         {
-            startDateString = datepicker1.Value.ToString("yyyy-MM-dd");
-            update();
+            try
+            {
+                startDateString = start_date.Value.ToString("yyyy-MM-dd");
+                update();
+            }catch(Exception ex)
+            {
+                Console.WriteLine();
+            }
         }
 
         private void end_date_ValueChanged(object sender, EventArgs e)
-        {
-            endDateString = end_date.Value.ToString("yyyy-MM-dd");
-            update();
+        {   try
+            {
+                endDateString = end_date.Value.ToString("yyyy-MM-dd");
+                update();
+            }
+            catch (Exception ex) { Console.WriteLine(ex); }
         }
 
       
 
         private void cboxMonsterX_CheckedChanged(object sender, EventArgs e)
         {
-            update();
+            try { update(); }
+            catch (Exception ex)
+            { Console.WriteLine(ex); }
         }
 
         private void cboxCheese_CheckedChanged(object sender, EventArgs e)
         {
-            update();
+            try { update(); }
+            catch (Exception ex)
+            { Console.WriteLine(ex); }
         }
 
         private void cboxBulgogiWhaper_CheckedChanged(object sender, EventArgs e)
         {
-            update();
+            try { update(); }
+            catch (Exception ex)
+            { Console.WriteLine(ex); }
         }
 
         private void cboxShrimpWhaper_CheckedChanged(object sender, EventArgs e)
         {
-            update();
+            try { update(); }
+            catch (Exception ex)
+            { Console.WriteLine(ex); }
         }
         #endregion
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // 클릭된 행의 배경색 변경
-            if (e.RowIndex >= 0)
+            try
             {
-                if (dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor != Color.FromArgb(192, 192, 255))
+                // 클릭된 행의 배경색 변경
+                if (e.RowIndex >= 0)
                 {
-                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(192, 192, 255);
-                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+                    if (dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor != Color.FromArgb(192, 192, 255))
+                    {
+                        dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(192, 192, 255);
+                        dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.White;
+                    }
+                    else
+                    {
+                        dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                        dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                    }
                 }
-                else
-                {
-                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
-                    dataGridView1.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
-                }
-            }
+            }catch(Exception ex)
+            { Console.WriteLine(ex); }
         }
 
-
+      
     }
 }
