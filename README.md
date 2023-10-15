@@ -31,7 +31,7 @@ Porduct에서는 위에 데이터피커에 따른 기간별 생산량을 볼수 
 두번째 그래프는 기간에 따른 오류가 발생한 경우, 각 코드별 오류가 몇퍼센트인지 확인할수 있는 도넛 그래프이다.
 세번째 그래프는 전체 생산량과 오류량을 나타낸 것이다.
 
-<h2>Report</h2>
+<h2>Cusotomer</h2>
 <img src="https://github.com/psk0812/Product/assets/130532081/6d266e5d-fcfd-4653-a850-901d8b2304fb">
 ADO.NET을 통해 MVVM 패턴을 구현하였다.(data는 Northwind이다)
 
