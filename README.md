@@ -13,7 +13,7 @@ custer.cs와 CustomerViewModel(MVVM패턴 적용)
 
 ## Product
 <h2>Product</h2>
-<img src=https://github.com/psk0812/Product/assets/130532081/0446b1c8-d1c9-40cb-b061-b0c754cbde4e">
+<img src="https://github.com/psk0812/Product/assets/130532081/1539e205-c6d1-43e8-aa30-2aad7b4ff4b8">
 일단 기본적으로 메뉴 부분은 시간이 표시되고, 네트워크 연결상태를 보여준다.
 네트워크가 끊기면 에러(붉은색)으로 바뀐다.
 
@@ -25,14 +25,16 @@ Porduct에서는 위에 데이터피커에 따른 기간별 생산량을 볼수 
 
 
 <h2>Report</h2>
-<img src="https://github.com/psk0812/Product/assets/130532081/1d75aa0a-faa4-4ddb-93c9-489faecb3551">
+<img src="https://github.com/psk0812/Product/assets/130532081/00d1c35e-0a98-48f0-88a0-90f58bc74e1b">
+
 
 첫번째 그래프는 각 날짜별 오류 코드별 불량품이 얼마나 나왔는지 볼수 있는 그래프다.
 두번째 그래프는 기간에 따른 오류가 발생한 경우, 각 코드별 오류가 몇퍼센트인지 확인할수 있는 도넛 그래프이다.
 세번째 그래프는 전체 생산량과 오류량을 나타낸 것이다.
 
 <h2>Cusotomer</h2>
-<img src="https://github.com/psk0812/Product/assets/130532081/6d266e5d-fcfd-4653-a850-901d8b2304fb">
+<img src="https://github.com/psk0812/Product/assets/130532081/c4007238-9607-476d-8286-165062dd444c">
+
 ADO.NET을 통해 MVVM 패턴을 구현하였다.(data는 Northwind이다)
 
 NEW버튼을 누르고 데이터를 입력후 Save를 하면 바로 mssql에 적용된다. 
